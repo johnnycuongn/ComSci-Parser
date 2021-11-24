@@ -1,5 +1,14 @@
+# Java Parser
+### Description
+This parser receive a string(source code) and return a tree of tokens in order with the source code.
+###
 - Lexical Analyser: analyse tokens and return an ordered array of tokens
 - Syntactical Analyser: use and return a tree of grammars
+
+### Implemented Syntax
+- For loop, while, if-elseif-else
+- Numbers operators (+,-,*,/,%)
+- Number comparison
 
 
 ### Grammar
@@ -82,3 +91,5 @@ else
 " 
 ' 
 ```
+### Acknowledgement
+Theory of Computating Science - UTS
