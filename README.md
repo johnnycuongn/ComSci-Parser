@@ -92,4 +92,4 @@ else
 ' 
 ```
 ### Acknowledgement
-Theory of Computating Science - UTS
+Theory of Computing Science - UTS
