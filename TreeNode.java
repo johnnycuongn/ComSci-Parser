@@ -20,19 +20,25 @@ class TreeNode {
 	private Optional<Token> token;
 	private TreeNode parent;
 	private List<TreeNode> children;
+	private boolean visited;
+	private boolean isUpdated;
 
-	public TreeNode(Label label, TreeNode parent) {
+	public TreeNode(Label label, TreeNode parent, boolean visited, boolean isUpdated) {
 		this.label = label;
 		this.token = Optional.empty();
 		this.parent = parent;
 		children = new ArrayList<TreeNode>();
+		this.visited = visited;
+		this.isUpdated = isUpdated;
 	}
 
-	public TreeNode(Label label, Token token, TreeNode parent) {
+	public TreeNode(Label label, Token token, TreeNode parent, boolean visited, boolean isUpdated) {
 		this.label = label;
 		this.token = Optional.of(token);
 		this.parent = parent;
 		children = new ArrayList<TreeNode>();
+		this.visited = visited;
+		this.isUpdated = isUpdated;
 	}
 
 	public void addChild(TreeNode child) {
@@ -55,9 +61,33 @@ class TreeNode {
 		return this.label;
 	}
 
+	public boolean getVisited() {
+		return this.visited;
+	}
+
+	public void setVisited(boolean visited) {
+		this.visited = visited;
+	}
+
+	public boolean getIsUpdated() {
+		return this.isUpdated;
+	}
+
+	public void setIsUpdated(boolean isUpdated) {
+		this.isUpdated = isUpdated;
+	}
+
+	public void updateToken(Token t) {
+		if (!this.isUpdated) {
+			this.token = Optional.of(t);
+			this.isUpdated = true;
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "[" + this.label + ", " + this.token + "]";
 	}
 
 }
+

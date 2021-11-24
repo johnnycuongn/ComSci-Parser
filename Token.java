@@ -5,7 +5,7 @@ public class Token {
 	public enum TokenType implements Symbol {
 		PLUS, MINUS, TIMES, DIVIDE, MOD, ASSIGN, EQUAL, NEQUAL, LT, LE, GT, GE, LPAREN, RPAREN, LBRACE, RBRACE, AND, OR,
 		SEMICOLON, PUBLIC, CLASS, STATIC, VOID, MAIN, STRINGARR, ARGS, TYPE, PRINT, WHILE, FOR, IF, ELSE, DQUOTE,
-		SQUOTE, ID, NUM, CHARLIT, TRUE, FALSE, STRINGLIT;
+		SQUOTE, ID, NUM, CHARLIT, TRUE, FALSE, STRINGLIT, EPSILON, DOLLAR;
 
 		@Override
 		public boolean isVariable() {
@@ -34,31 +34,32 @@ public class Token {
 	public TokenType getType() {
 		return this.type;
 	}
-	
+
 	@Override
 	public String toString() {
 		switch (type) {
-		case ID :
-		case NUM :
-		case CHARLIT :
-		case TYPE :
-		case STRINGLIT : return "[" + type + ": " + value + "]";
-		default : return "[" + type + "]";
+			case ID :
+			case NUM :
+			case CHARLIT :
+			case TYPE :
+			case STRINGLIT : return "[" + type + ": " + value + "]";
+			default : return "[" + type + "]";
 		}
 	}
-	
+
 	@Override
 	public boolean equals(Object other) {
 		if (other == null) return false;
 		if (!Token.class.isAssignableFrom(other.getClass())) return false;
-		
+
 		Token t = (Token) other;
-		
+
 		if (t.type != this.type) return false;
-		
+
 		if (t.value == null || this.value == null) return t.value == this.value;
-		
+
 		return t.value.equals(this.value);
-	}	
+	}
 
 }
+
